@@ -1,0 +1,80 @@
+\ProvidesPackage{hw}
+
+%% Loading packages
+\RequirePackage[margin=2.5cm]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{amsmath}
+\RequirePackage{lastpage}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{microtype}
+\RequirePackage{tikz}
+\usetikzlibrary{shadows}
+
+\usepackage{xifthen}
+
+
+%%Variables
+\newcommand{\classname}{Class name}
+\newcommand{\studentname}{Student name}
+\newcommand{\teachername}{Teacher name}
+%% \newcommand{\chapternumber}{1}
+
+%%Counters
+\setcounter{secnumdepth}{0} %% No numbers on sections
+\newcounter{problemCounter}
+
+%%Environments
+\newenvironment{problem}[1][]
+{
+    \addtocounter{problemCounter}{1}
+    
+    \ifthenelse{\isempty{#1}}
+    {}
+    {\setcounter{problemCounter}{#1}}
+    
+    \section{Problem \theproblemCounter}
+}
+{}
+
+%%Commands
+\renewcommand{\maketitle}{
+  \thispagestyle{firstpage}
+  \vspace{5em}
+  \begin{center}
+    \begin{Huge}
+      Homework \\ \vspace{1em}
+      \textbf{\classname}
+    \end{Huge} \\ \vspace{1em}
+    \begin{Large}
+       \textbf{\studentname}
+    \end{Large}
+
+  \end{center}
+}
+%% Document settings
+\linespread{1.5}
+\setlength{\headheight}{15pt}
+%%%% Header / footer
+\fancypagestyle{firstpage}{ %% Only the footer for the first page
+%%%%%% Header
+\renewcommand{\headrulewidth}{0mm}
+\lhead{}
+\chead{}
+\rhead{}
+%%%%%% Footer
+\lfoot{\today}
+\cfoot{}
+\rfoot{Page \thepage\ / \pageref{LastPage}}
+}
+
+\pagestyle{fancy}
+%%%%%% Header
+\lhead{\studentname}
+\chead{\textbf{\classname}}
+\rhead{\teachername}
+%%%%%% Footer
+\lfoot{\today}
+\cfoot{}
+\rfoot{Page \thepage\ / \pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.1mm}
