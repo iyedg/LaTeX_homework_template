@@ -13,11 +13,14 @@
 
 \usepackage{xifthen}
 
+%%Macros
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@} %% Convert to roman numerals
 
 %%Variables
 \newcommand{\classname}{Class name}
 \newcommand{\studentname}{Student name}
 \newcommand{\teachername}{Teacher name}
+\newcommand{\chapternumber}{Chapter \rom{1}}
 %% \newcommand{\chapternumber}{1}
 
 %%Counters
@@ -52,6 +55,19 @@
 
   \end{center}
 }
+
+\newcommand{\chapter}{
+  \begin{center}
+    \begin{Large}
+      \hrule
+      \vspace{0.5em}
+      \textbf{Chapter \chapternumber} 
+      \vspace{0.5em}
+      \hrule
+    \end{Large}
+  \end{center}
+}
+
 %% Document settings
 \linespread{1.5}
 \setlength{\headheight}{15pt}
